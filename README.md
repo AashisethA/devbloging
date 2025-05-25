@@ -56,6 +56,7 @@ The following technologies and tools were used in the development of the DevBlog
 
 ## :page_facing_up: License
 
+
 This project is licensed under the [MIT License](LICENSE).
 
 ## :envelope: Contact
@@ -63,3 +64,5 @@ This project is licensed under the [MIT License](LICENSE).
 If you have any questions, suggestions, or feedback, feel free to reach out to us at idrisiarman19@gmail.com.
 
 Happy coding! :rocket:
+![image](https://github.com/user-attachments/assets/d4848681-d7d0-41fe-9ebd-7e19e28fa5cd)
+
