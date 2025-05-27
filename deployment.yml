@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devblog
+  namespace: dev-app
+  labels:
+    app: devblog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devblog
+  template:
+    metadata:
+      labels:
+        app: devblog
+    spec:
+      containers:
+      - name: node
+        image: aashiseth/devblog
+        ports:
+        - containerPort: 3000
+        env:
+        - name: MONGO_URI
+          value: mongodb://mongo:27017/devblog
+
+
