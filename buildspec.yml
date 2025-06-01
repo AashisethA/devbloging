@@ -6,7 +6,11 @@ phases:
       nodejs: 18
     commands:
       - echo Installing dependencies...
-      - npm install
+      - npm install mongoose
+
+  pre_build:
+    commands:
+      - echo Pre-build phase complete.
 
   build:
     commands:
@@ -15,8 +19,7 @@ phases:
   post_build:
     commands:
       - echo Checking MongoDB connection...
-      - |
-        node -e "
+      - node -e "
         const mongoose = require('mongoose');
         const uri = process.env.MONGO_URI;
         mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -29,9 +32,3 @@ phases:
             process.exit(1);
           });
         "
-
-artifacts:
-  files:
-    - '**/*'
-  discard-paths: yes
-
