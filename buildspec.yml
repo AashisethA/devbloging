@@ -5,18 +5,32 @@ phases:
     runtime-versions:
       nodejs: 18
     commands:
-      - echo "Installing dependencies..."
-      - npm install mongoose
-
-  pre_build:
-    commands:
-      - echo "Pre-build phase complete."
+      - echo Installing dependencies...
+      - npm install
 
   build:
     commands:
-      - echo "Build phase complete."
+      - echo Build phase complete.
 
   post_build:
     commands:
-      - echo "Checking MongoDB connection..."
-      - node -e "const mongoose = require('mongoose'); const uri = process.env.MONGO_URI; mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => { console.log('MongoDB connected successfully.'); process.exit(0); }).catch(err => { console.error('MongoDB connection error:', err.message); process.exit(1); });"
+      - echo Checking MongoDB connection...
+      - |
+        node -e "
+        const mongoose = require('mongoose');
+        const uri = process.env.MONGO_URI;
+        mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+          .then(() => {
+            console.log('MongoDB connected successfully.');
+            process.exit(0);
+          })
+          .catch(err => {
+            console.error('MongoDB connection error:', err.message);
+            process.exit(1);
+          });
+        "
+
+artifacts:
+  files:
+    - '**/*'
+  discard-paths: yes
