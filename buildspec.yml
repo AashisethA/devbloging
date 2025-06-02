@@ -15,6 +15,7 @@ phases:
   post_build:
     commands:
       - echo Checking MongoDB connection...
+      - npm list mongoose || npm install mongoose
       - |
         node -e "
         const mongoose = require('mongoose');
